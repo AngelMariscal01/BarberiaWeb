@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+    Publicaciones
+{% endblock %}
+
+{% block content %}
+    <h1>Publicaciones</h1>
+    {% if not esBarbero %}
+        <a href="/regBarbero">Hazte barbero!</a>
+    {% else %}
+        <a href="/crearPublicacion">Crear Publicación</a>
+    {% endif %}
+    
+    <div class="post-list">
+        {% for p in publicaciones %}
+            <div class="post">
+                <h2 class="post-title">{{ p.titulo }}</h2>
+                <a href="/perfil/{{p.barbero.userId}}"><p class="post-user">{{ p.barbero.usuario.nombre }}</p></a>
+                <p class="post-date">{{ p.fecha }} at {{ p.hora }}</p>
+                <p class="post-content">{{ p.contenido }}</p>
+                <img src="/consultarImgPub/{{ p.publicacionId }}" width="200" height="200" class="post-image" alt="Imagen de la publicación">
+                
+                <!-- Espacio para comentarios -->
+                <div class="comments-section">
+                    <!-- Mostrar comentarios si existen -->
+                    <h3>Comentarios:</h3>
+                    <ul class="comments-list">
+                        {% for comment in p.comentarios %}
+                            <li class="comment">
+                                <div class="comment-content">{{ comment.contenido }}</div>
+                                {% if comment.usuario %}
+                                    <a href="/perfil/{{comment.usuario.userId}}"><span class="comment-author">{{ comment.usuario.nombre }}</span></a>
+                                {% endif %}
+                            </li>
+                        {% endfor %}
+                    </ul>
+
+                    <!-- Formulario para escribir un comentario -->
+                    <form action="/crearComentario/{{ p.publicacionId }}" method="POST" class="comment-form">
+                        <textarea name="comentario" placeholder="Escribe tu comentario aquí" rows="3" cols="50"></textarea><br>
+                        <input type="submit" value="Comentar">
+                    </form>
+                </div>
+                
+                {% if esBarbero and p.barberoId == barberId %}
+                    <div class="post-actions">
+                        <a href="/editarPublicacion/{{ p.publicacionId }}">Editar</a>
+                        <a href="/eliminarPublicacion/{{ p.publicacionId }}">Eliminar</a>
+                    </div>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+

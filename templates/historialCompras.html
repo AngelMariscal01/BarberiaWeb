@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+    Historial de Compras
+{% endblock %}
+
+{% block content %}
+    <div class="container mt-4">
+        <h1>Historial de Compras</h1>
+        <hr>
+        <div class="row">
+            <div class="col-md-8">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Fecha</th>
+                            <th>Producto</th>
+                            <th>Cantidad</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for compra in historial %}
+                            <tr>
+                                <td>{{ compra.fecha.strftime('%Y-%m-%d') }}</td>
+                                <td>{{ compra.producto.nombre }}</td>
+                                <td>{{ compra.cantidad }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- Agrega un enlace para volver a alguna otra página -->
+        <a href="/mostrarProductos" class="btn btn-primary mt-3">Volver a los productos</a>
+    </div>
+{% endblock %}

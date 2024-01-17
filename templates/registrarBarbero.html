@@ -1,0 +1,33 @@
+{%extends 'base.html'%}
+
+{%block titulo%}
+    Registrar Usuario
+{%endblock%}
+
+{%block content%}
+    <h1>Registrando Usuario a Barbero</h1>
+    <form action="/regBarbero" method="post" enctype="multipart/form-data">
+        <label for="">¿Qué rango de precios manejas? (Ej: 100-200)</label>
+        <input type="text" name="precios" id="">
+        <br>
+        <label for="">¿Que especialidad(es) tienes?</label>
+        <input type="text" name="especialidad" id="">
+        <br>
+        <label for="">¿Qué horario manejas?</label>
+        <input type="text" name="horario" id="">
+        <br>
+        <label for="">Agrega una foto</label>
+        <input type="file" name="fotoBarbero" id="">
+        <br>
+        <label for="">Barberia</label>
+        <select name="barberia" id="" class="form-control">
+            {%for bar in barberias%}
+            <option value="{{bar.barberiaId}}">{{bar.nombre}}</option>
+            {%endfor%}
+        </select>
+
+        <a href="/registrarBarberia">Registra una barberia</a>
+        <br>
+        <input type="submit" value="Registrarme">
+    </form>
+{%endblock%}

@@ -1,0 +1,24 @@
+{%extends 'base.html'%}
+
+{%block titulo%}
+    Registrar Barberia
+{%endblock%}
+
+{%block content%}
+    <h1>Registrando Barberia</h1>
+    <form action="/registrarBarberia" method="post" enctype="multipart/form-data">
+        <label for="">Nombre de la barberia</label>
+        <input type="text" name="nombre" id="">
+        <br>
+        <label for="">Ubicacion</label>
+        <input type="text" name="ubicacion" id="">
+        <br>
+        <label for="">Calificacion</label>
+        <input type="number" name="calificacion" id="">
+        <br>
+        <label for="">Servicios</label>
+        <input type="text" name="servicios" id="">
+        <br>
+        <input type="submit" value="Registrarme">
+    </form>
+{%endblock%}

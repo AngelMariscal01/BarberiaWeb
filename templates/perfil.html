@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+    Detalles del usuario {{ user.nombre }}
+{% endblock %}
+
+{% block content %}
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-4">
+                <img src="/consultarFotoPerfil/{{ user.userId }}" alt="Foto de perfil" class="img-fluid">
+            </div>
+            <div class="col-md-8">
+                <h1>{{ user.nombre }} {{ user.apellido }}</h1>
+                <p><strong>Correo:</strong> {{ user.correo }}</p>
+                <p><strong>Fecha de nacimiento:</strong> {{ user.fechaNacimiento }}</p>
+                <p><strong>Sexo:</strong> {% if user.sexo == 0 %}Hombre{% else %}Mujer{% endif %}</p>
+                {% if barber %}
+                    <h2>Detalles del barbero:</h2>
+                    <p><strong>Especialidad:</strong> {{ barber.especialidad }}</p>
+                    <p><strong>Precios:</strong> {{ barber.precios }}</p>
+                    <p><strong>Horario:</strong> {{ barber.horario }}</p>
+                    <h2>Detalles de la barbería:</h2>
+                    <p><strong>Nombre:</strong> {{ barber.barberia.nombre }}</p>
+                    <p><strong>Ubicación:</strong> {{ barber.barberia.ubicacion }}</p>
+                    <p><strong>Calificación:</strong> {{ barber.barberia.calificacion }}</p>
+                    <p><strong>Servicios:</strong> {{ barber.barberia.servicios }}</p>
+                {% endif %}
+                <a href="/mostrarPublicaciones" class="btn btn-primary">Regresar</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

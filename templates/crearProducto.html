@@ -1,0 +1,27 @@
+{%extends 'base.html'%}
+
+{%block titulo%}
+    Crear Producto
+{%endblock%}
+
+{%block content%}
+    <h1>Crear Producto</h1>
+    <form action="/crearProducto" method="post" enctype="multipart/form-data">
+        <label for="">Nombre</label>
+        <input type="text" name="nombre" id="">
+        <br>
+        <label for="">Descripcion</label>
+        <input type="text" name="descripcion" id="">
+        <br>
+        <label for="">Precio</label>
+        <input type="number" name="precio" id="">
+        <br>
+        <label for="">Stock</label>
+        <input type="number" name="stock" id="">
+        <br>
+        <label for="">Agrega una foto</label>
+        <input type="file" name="foto" id="">
+        <br>
+        <input type="submit" value="Crear">
+    </form>
+{%endblock%}

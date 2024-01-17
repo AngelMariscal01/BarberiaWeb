@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+    Carrito de Compras
+{% endblock %}
+
+{% block content %}
+    <div class="container mt-4">
+        <h1>Carrito de Compras</h1>
+        <hr>
+        <div class="row">
+            <div class="col-md-8">
+                <ul class="list-group">
+                    {% for item in cart_items %}
+                    <li class="list-group-item">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <a href="/mostrarDetallesProducto/{{ item.producto.productoId }}">
+                                    {{ item.producto.nombre }}
+                                </a>
+                                <span class="ml-2">Cantidad: {{ item.cantidad }}</span>
+                            </div>
+                            <form action="/eliminarProductoCarrito/{{ item.producto.productoId }}" method="post">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <button type="submit" class="btn btn-danger btn-sm">Eliminar Producto</button>
+                            </form>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+                <form action="/eliminarCarrito" method="post" class="mt-3">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button type="submit" class="btn btn-danger">Eliminar Carrito</button>
+                </form>
+            </div>
+            <div class="col-md-4">
+                <!-- Puedes agregar un resumen del carrito o promociones aquí -->
+            </div>
+        </div>
+        
+        <div class="mt-4">
+            <form action="/completarCompra" method="post">
+                <button type="submit" class="btn btn-success">Completar compra</button>
+            </form>
+            <a href="/mostrarProductos" class="btn btn-primary">Regresar</a>
+        </div>
+    </div>
+{% endblock %}

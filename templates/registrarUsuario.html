@@ -1,0 +1,39 @@
+{%extends 'base.html'%}
+
+{%block titulo%}
+    Registrar Usuario
+{%endblock%}
+
+{%block content%}
+    <h1>Registrando Usuario</h1>
+    <form action="/regUsuario" method="post" enctype="multipart/form-data">
+        <label for="">Nombre</label>
+        <input type="text" name="nombre" id="">
+        <br>
+        <label for="">Apellido</label>
+        <input type="text" name="apellido" id="">
+        <br>
+        <label for="">Correo electronico</label>
+        <input type="email" name="correo" id="">
+        <br>
+        <label for="">Contraseña</label>
+        <input type="password" name="contrasena" id="">
+        <br>
+        <label for="">Telefono</label>
+        <input type="text" name="telefono" id="">
+        <br>
+        <label for="">Fecha de nacimiento</label>
+        <input type="date" name="fechaNacimiento" id="">
+        <br>
+        <label>Sexo:</label>
+        <input type="radio" name="sexo" value="0" id="">
+        <label for="sexoHombre">Hombre</label>
+        <input type="radio" name="sexo" value="1" id="">
+        <label for="sexoMujer">Mujer</label>
+        <br>
+        <label for="">Agrega una foto</label>
+        <input type="file" name="foto" id="">
+        <br>
+        <input type="submit" value="Registrarme">
+    </form>
+{%endblock%}
