@@ -1,6 +1,6 @@
 Librerias utilizadas: 
-Flask
-Flask-Bootstrap
-Flask-Login
-pymysql
+Flask,
+Flask-Bootstrap,
+Flask-Login,
+pymysql,
 SQLAlchemy
